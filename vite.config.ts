@@ -5,7 +5,9 @@ import react from '@vitejs/plugin-react';
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, '.', '');
     return {
-      base: '/guia-turistico-cristino-castro/',
+      // Alterei a base para o nome do repositório; GitHub Pages irá servir em
+      // https://<usuario>.github.io/turismocc/
+      base: '/turismocc/',
       server: {
         port: 3000,
         host: '0.0.0.0',
