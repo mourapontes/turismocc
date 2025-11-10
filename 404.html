@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Redirecionando…</title>
+  </head>
+  <body>
+    <script>
+      // Tenta carregar o index.html relativo (funciona tanto em / quanto em /<repo>/)
+      fetch('./index.html')
+        .then(function(response) { return response.text(); })
+        .then(function(html) {
+          document.open();
+          document.write(html);
+          document.close();
+          // Mantém a URL atual no histórico para o roteador do SPA processar a rota
+          history.replaceState({}, '', location.pathname + location.search + location.hash);
+        })
+        .catch(function() {
+          // Fallback simples se fetch falhar
+          location.replace('./');
+        });
+    </script>
+    <noscript>Se você não foi redirecionado automaticamente, <a href="./">clique aqui</a>.</noscript>
+  </body>
+</html>
